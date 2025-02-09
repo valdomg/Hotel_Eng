@@ -6,10 +6,10 @@ from bdkeys import host, user, password, database
 
 app = Flask(__name__)
 
-app.config ['MYSQL_HOST'] = host
-app.config ['MYSQL_USER'] = user
-app.config ['MYSQL_PASSWORD'] = password
-app.config ['MYSQL_DB'] = database
+app.config ['MYSQL_HOST'] = host()
+app.config ['MYSQL_USER'] = user()
+app.config ['MYSQL_PASSWORD'] = password()
+app.config ['MYSQL_DB'] = database()
 
 mysqlConnection = mysql.connector.connect(
     host=app.config['MYSQL_HOST'],
