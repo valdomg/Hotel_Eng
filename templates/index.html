@@ -35,12 +35,11 @@
                     {% for hotel in hotel %}
                   <div class="col">
                    
-                    <!--
-                    <img src="{{ url_for('static', filename=hotel.hotel_img) }}" alt="Imagem do hotel">
-                    -->
+                    
+                    <img src="{{ url_for('static', filename='imagens/hoteis/' +hotel.hotel_img|string + '.png') }}" alt="Imagem do hotel">
+                    
 
-                    <img src="{{ url_for('static', filename='imagens/hoteis' + hotel.hotel_img + '.png') }}" alt="Imagem do hotel">
-    
+                    
                     <h2>{{ hotel.nome }}</h2>
                     <p><strong>Localização:</strong> {{ hotel.localizacao }}</p>
                   </div>
@@ -55,3 +54,6 @@
     </footer>
 </body>
 </html>
+
+
+    
