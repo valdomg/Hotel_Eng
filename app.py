@@ -28,8 +28,6 @@ def home():
         cursor.execute("SELECT *FROM hoteis")
         hotel = cursor.fetchall()
         cursor.close()
-
-        print(hotel)
     except mysql as error:
         return f"falise to acess tables in MYSQL: {error}"
 
