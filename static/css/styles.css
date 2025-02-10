@@ -1,0 +1,38 @@
+html{
+    
+}
+
+body{
+    
+}
+
+main{
+    color: red;
+    margin-top: 50px;
+}
+
+img{
+    width: inherit;
+    height: inherit;
+}
+
+.col{
+    margin: auto;
+    margin-bottom: 20px;
+    width: 300px;
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    
+}
+h2{
+    font-size: large;
+}
+
+a{
+    color: white;
+}
+
+footer {
+
+}
