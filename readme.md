@@ -6,8 +6,8 @@ Este é um sistema web para gerenciamento de hospedagens em hotéis, desenvolvid
 
 ### **1. Clonar o Repositório**
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/valdomg/Hotel_Eng.git
+cd Hotel_Eng
 ```
 
 ### **2. Criar um Ambiente Virtual**
