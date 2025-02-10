@@ -10,22 +10,20 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-        </nav>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container">
+
+          <a class="navbar-brand" href="#">
+            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
+          </a>
+
+          <a class="navbar-brand" href="#">
+            Login
+          </a>
+          
+        </div>
+      </nav>
+</nav>
     </header>
 
     <main>
@@ -41,6 +39,7 @@
 
                     
                     <h2>{{ hotel.nome }}</h2>
+                    <div class="d-grid gap-2"><button type="button" class="btn btn-danger"><a href="#">Conferir!</a></button></div>
                     <p><strong>Localização:</strong> {{ hotel.localizacao }}</p>
                   </div>
                     {% endfor %}
