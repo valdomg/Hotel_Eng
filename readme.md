@@ -17,15 +17,20 @@ source venv/bin/activate  # Para Linux/Mac
 venv\Scripts\activate     # Para Windows
 ```
 
-### **3. Instalar Dependências**
+### **3. Instalar Flask**
 ```bash
-pip install -r requirements.txt
+pip install Flask
 ```
 
-### **4. Configurar Banco de Dados (MySQL)**
+### **4. Instalar MySQlConnector**
+```bash
+pip install flask-mysql-connector
+```
+
+### **5. Criar o Banco de Dados MYSQL**
 1. Instale o MySQL e crie um banco de dados:
-```sql
-CREATE DATABASE hotel_management;
+```bash
+Copiar e colar o Schema.db
 ```
 2. Configure as credenciais no arquivo `dbkeys.py` (crie este arquivo se não existir):
 ```ini
@@ -35,12 +40,7 @@ DB_PASSWORD=sua_senha
 DB_NAME=hotel_management
 ```
 
-### **3. Para baixar o SQLAlchemy**
-```bash
-pip pip install flask-mysql-connector
-```
-
-### **3. Executar o Servidor**
+### **6. Executar o Servidor**
 ```bash
 flask run
 ```
