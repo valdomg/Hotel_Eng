@@ -32,7 +32,7 @@ pip install flask-mysql-connector
 ```bash
 Copiar e colar o Schema.db
 ```
-2. Configure as credenciais no arquivo `dbkeys.py` (crie este arquivo se não existir):
+2. Configure as credenciais no arquivo `.env` (crie este arquivo se não existir):
 ```ini
 DB_HOST=localhost
 DB_USER=root
