@@ -50,7 +50,19 @@ Rota de recuperação de senha
 '''
 Rota de hotel
 '''
+@app.route('/hotel/<int:id>', methods = ['GET'])
+def hotelPagina(id):
 
+    try:
+        if request.method == 'GET':
+            cursor = MYSQL_CONNECTION.cursor()
+            cursor.execute(f'SELECT * FROM hoteis WHERE id = {id}')
+            hotel = cursor.fetchone()
+            cursor.close()
+    except mysql as error:
+        return f"falise to acess tables in MYSQL: {error}"
+    
+    return render_template('paginaHotel.html', hotel = hotel)
 '''
 Rota de carrinho
 '''
@@ -59,5 +71,10 @@ Rota de carrinho
 Rota de administrador
 '''
 
+'''Rota de Quem Somos'''
+@app.route('/QuemSomos')
+def quemSomos():
+     return render_template('quemSomos.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
