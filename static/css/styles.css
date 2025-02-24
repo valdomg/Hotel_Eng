@@ -6,81 +6,148 @@
     AMARELO = FADA7A rgb(250, 218, 122)
     LARANJA = F0A04B rgb(240, 160, 75)
 
+    FONTE OPEN SANS
+    .open-sans-<uniquifier> {
+  font-family: "Open Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
 */
 
-
 html{
-    font-family: "Open Sans", serif;
+    scroll-behavior: smooth;
 }
 
 body{
-    
+    font-family: "Open Sans", serif;
+    color:rgb(252, 231, 200) ;
+}
+
+header{
+
+}
+
+nav{
+
 }
 
 main{
-    margin-top: 50px;
+
 }
 
-.img_logo{
-    width: 90px;
-    height: auto;
-}
+section{
 
-img{
-    width: 270px;
-    height: inherit;
-    border-radius: inherit;
-}
-
-.img_home{
-    margin-top: 10px;
-}
-
-.col{
-    margin: auto;
-    margin-bottom: 20px;
-    width: 310px;
-    border-radius: 20px;
-    border-color: rgb(233, 233, 233);
-    border-style: solid;
-    border-width: 1px;
-    
-}
-.nome_hotel{
-    margin-top: 10px;
-    font-size: 25px;
-}
-.localizacao_hotel{
-    margin-top: 10px;
-}
-h2{
-    font-size: large;
 }
 
 a{
     text-decoration: none;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    
+    font-weight: 900;
+    font-size: 20px;
+    color: rgb(252, 231, 200);
 }
 
-button{
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+footer{
+
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
     background-color: rgb(177, 194, 158);
-    height: 40px;
-    width: 230px;
-    border-radius: 10px;
-    border-style: hidden;
+    gap: 3vw;
+    text-align: center;
 }
 
-button:hover{
+.label-pesquisa{
+    border-radius: 10px;
+}
+
+.pesquisa{
+    grid-column: 2/4;
+    border-radius: 20px;
+    border-style: hidden;
+    height: 35px;
+    font-weight: bolder;
     color: rgb(177, 194, 158);
-    background-color:rgb(252, 231, 200);
+    box-shadow: 1px 1px 5px rgba(32, 61, 41, 0.1)
+
+}
+
+.img-home-slide{
+    width: 100vw;
+    height: auto;
+
+}
+
+
+/* Para garantir que o placeholder tenha cor diferente */
+.pesquisa input::placeholder {
+    color:rgb(177, 194, 158);
+}
+
+/* Quando o input está focado */
+.pesquisa input:focus {
+    outline: none;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 3vw;
+}
+
+.card-grid .card:first-child {
+    grid-column: 1/3;
+}
+
+.navbar-col{
+
+}
+
+
+
+
+
+
+.img-logo-nav{
+    width: 100px;
+    height: auto;
     
 }
 
 
-footer {
+@media (max-width: 768px) {
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+    }
 
+    .pesquisa {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .quem-somos{
+        display: none;
+    }
+
+    .img-logo-nav {
+        width: 70px;
+    }
+
+    a {
+        font-size: 18px;
+    }
 }
