@@ -4,83 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <!-- Importação do Bootstrap para estilização -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Importação da fonte Open Sans do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
 
+    <!-- Importação do arquivo de estilos CSS personalizado -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-
 <body>
+  <!-- NAVBAR (Barra de Navegação) -->
     <header>
       <div class="navbar">
         <div class="navbar-col logo">
-          <a href="{{ url_for('home' ) }}"><img class="img-logo-nav" src="{{ url_for('static', filename='imagens/logo/logo.png' ) }}" alt="" srcset=""></a>
+          <!-- Link para a página inicial com a logo -->
+          <a href="{{ url_for('home' ) }}">
+            <img class="img-logo-nav" src="{{ url_for('static', filename='imagens/logo/logo.png' ) }}" alt="Logo">
+          </a>
         </div> 
 
+        <!-- Campo de pesquisa na navbar -->
         <div class="navbar-col pesquisa">
-          <input type="email" class="form-control pesquisa" id="" placeholder="Pesquisar">
+          <input type="email" class="form-control pesquisa" placeholder="Pesquisar ⌕">
         </div>
 
+        <!-- Link para a página "Quem Somos" -->
         <div class="navbar-col quem-somos">
           <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
         </div>
 
+        <!-- Link para a página de login -->
         <div class="navbar-col login">
           <a href="#">Login</a>
         </div>
       </div>
     </header>
 
-    <section>
-      <div class="home-slide">
-        <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/4.png' ) }}" alt="" srcset="">
-      </div>
-    </section>
-
-    <p>{{ lipsum(n=5, html=True, min=1, max=20) }}</p>
-
     <main>
-      <section>
-        <div class="card-grid">
-          {% for hotel in hotel %}
-
-          <div class="card">
-            <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
-            <h2 class="nome-card-nome">{{ hotel.nome }}</h2>
-                      
-            <a href="{{ url_for('hotelPagina', id=hotel.id ) }}"><button type="button">Conferir</button></a> 
-            <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
-            
-          </div>
-
-          {% endfor %}>
-
-        </div>
-      </section>
-    </main>
-
-    <!--
-    <main>
+        <!-- Seção inicial da página (Imagem + Texto) -->
         <section>
-          {% for hotel in hotel %}
-            <img class="" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
-            <h2 class="">{{ hotel.nome }}</h2>
-            <div class="">
-                      
-            <a href="{{ url_for('hotelPagina', id=hotel.id ) }}"><button type="button">Conferir</button></a> 
-            <p class="localizacao_hotel"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
-                 
-          {% endfor %}>
+          <div class="home-init">
+            <div class="home-slide">
+              <!-- Imagem principal da seção inicial -->
+              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/2.png' ) }}" alt="Imagens de Hotéis">
+            </div>
+  
+            <div class="home-text">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção de cartões para exibição dos hotéis -->
+        <section>
+          <div class="card-grid">
+            
+            {% for hotel in hotel %}
+            <div class="card">
+              <!-- Imagem do hotel -->
+              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
+              
+              <!-- Nome do hotel -->
+              <h2 class="nome-card-home">{{ hotel.nome }}</h2>
+              
+              <!-- Localização do hotel -->
+              <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
+              
+              <!-- Botão para visualizar mais detalhes do hotel -->
+              <a class="a-card-home" href="{{ url_for('hotelPagina', id=hotel.id ) }}">
+                <button class="btn-card-home" type="button">Conferir!</button>
+              </a> 
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+      
+        <!-- Seção final com outra imagem e texto -->
+        <section>
+          <div class="home-end">
+            <div class="home-end-slide">
+              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/4.png' ) }}" alt="Imagens de Hotéis">
+            </div>
+
+            <div class="home-text">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Outra seção de cartões, possivelmente para residências -->
+        <section>
+          <div class="card-grid">
+            
+            {% for hotel in hotel %}
+            <div class="card">
+              <!-- Imagem do hotel -->
+              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
+              
+              <!-- Nome do hotel -->
+              <h2 class="nome-card-home">{{ hotel.nome }}</h2>
+              
+              <!-- Localização do hotel -->
+              <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
+              
+              <!-- Botão para visualizar mais detalhes do hotel -->
+              <a class="a-card-home" href="{{ url_for('hotelPagina', id=hotel.id ) }}">
+                <button class="btn-card-home" type="button">Conferir!</button>
+              </a> 
+            </div>
+            {% endfor %}
+          </div>
         </section>
     </main>
-    -->
+    
+    <!-- Rodapé da página -->
     <footer>
-
     </footer>
 </body>
 </html>
-
-
-    
