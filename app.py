@@ -55,14 +55,14 @@ def hotelPagina(id):
 
     try:
         if request.method == 'GET':
-            cursor = MYSQL_CONNECTION.cursor()
+            cursor = MYSQL_CONNECTION.cursor(dictionary=True)
             cursor.execute(f'SELECT * FROM hoteis WHERE id = {id}')
-            hotel = cursor.fetchone()
+            hotelCarac = cursor.fetchone()
             cursor.close()
     except mysql as error:
         return f"falise to acess tables in MYSQL: {error}"
     
-    return render_template('paginaHotel.html', hotel = hotel)
+    return render_template('paginaHotel.html', hotelCarac=hotelCarac)
 '''
 Rota de carrinho
 '''
