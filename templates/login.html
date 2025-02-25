@@ -46,22 +46,25 @@
   <main>
 
     <section>
-        <div class="formulario-login">
+        <div class="formulario">
 
-            <h2>Login</h2>
             <form action="/login" method="POST">
-                <div class="form-group">
+                <div class="item-form form-nome"></div>
+                    <h2>Login</h2>
+                <div class="item-form form-group-email">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
                 </div>
             
-                <div class="form-group">
+                <div class="item-form form-group-senha">
                     <label for="senha">Senha:</label>
                     <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
                 </div>
-            
-                <button type="submit" class="btn-login">Entrar</button>
-
+                
+                <div class="item-form form-group-btn">
+                    <button type="submit" class="btn-login">Entrar</button>
+                </div>
+               
                 <a href="">Não tem Cadastro? Crie um conta clicando aqui</a>
             </form>
 
@@ -70,8 +73,6 @@
 
   </main>
 
-  <footer>
-    aaaaaaaaaaa
-  </footer>
+
 </body>
 </html>
