@@ -38,7 +38,9 @@ def home():
 '''
 Rota de login
 '''
-
+@app.route('/login')
+def login():
+    return render_template('login.html')
 '''
 Rota de cadastro
 '''
@@ -59,6 +61,7 @@ def hotelPagina(id):
             cursor.execute(f'SELECT * FROM hoteis WHERE id = {id}')
             hotelCarac = cursor.fetchone()
             cursor.close()
+            print(hotelCarac)
     except mysql as error:
         return f"falise to acess tables in MYSQL: {error}"
     
