@@ -27,7 +27,7 @@
 
         <!-- Campo de pesquisa na navbar -->
         <div class="navbar-col pesquisa">
-          <input type="email" class="form-control pesquisa" placeholder="Pesquisar ⌕">
+          <input type="text" class="form-control pesquisa" placeholder="Pesquisar ⌕">
         </div>
 
         <!-- Link para a página "Quem Somos" -->
@@ -37,7 +37,7 @@
 
         <!-- Link para a página de login -->
         <div class="navbar-col login">
-          <a href="#">Login</a>
+          <a href="{{ url_for('login' ) }}">Login</a>
         </div>
       </div>
     </header>
