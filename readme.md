@@ -42,7 +42,7 @@ DB_NAME=hotel_management
 
 ### **6. Executar o Servidor**
 ```bash
-flask run
+py app.py
 ```
 Acesse o sistema em `http://127.0.0.1:5000/`.
 
