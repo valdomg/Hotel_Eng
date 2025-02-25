@@ -43,10 +43,12 @@ def login():
     return render_template('login.html')
 '''
 Rota de cadastro
+Paulo Braga
 '''
 
 '''
 Rota de recuperação de senha
+Yara
 '''
 
 '''
@@ -68,6 +70,7 @@ def hotelPagina(id):
     return render_template('paginaHotel.html', hotelCarac=hotelCarac)
 '''
 Rota de carrinho
+Valdemiro
 '''
 
 '''
