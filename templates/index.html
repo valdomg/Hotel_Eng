@@ -37,7 +37,15 @@
 
         <!-- Link para a página de login -->
         <div class="navbar-col login">
-          <a href="{{ url_for('login' ) }}">Login</a>
+
+          {% if session['loggedin'] == True %}
+            <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+          {% elif session['loggedin'] == False %}
+            <a href="{{ url_for('login' ) }}">Login</a>
+          {% else %}
+            <a href="{{ url_for('login' ) }}">Login</a>
+          {% endif %}
+          
         </div>
       </div>
     </header>
@@ -56,8 +64,8 @@
             </div>
           </div>
         </section>
-
-        <!-- Seção de cartões para exibição dos hotéis -->
+        
+        <!-- Seção de cartões para exi  bição dos hotéis -->
         <section>
           <div class="card-grid">
             

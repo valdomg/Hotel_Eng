@@ -36,9 +36,17 @@
         <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
       </div>
 
-      <!-- Link para a página de login -->
-      <div class="navbar-col login">
-        <a href="#">Login</a>
+       <!-- Link para a página de login -->
+       <div class="navbar-col login">
+
+        {% if session['loggedin'] == True %}
+          <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+        {% elif session['loggedin'] == False %}
+          <a href="{{ url_for('login' ) }}">Login</a>
+        {% else %}
+          <a href="{{ url_for('login' ) }}">Login</a>
+        {% endif %}
+        
       </div>
     </div>
   </header>
