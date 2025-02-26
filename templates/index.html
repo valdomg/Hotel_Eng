@@ -48,7 +48,7 @@
           <div class="home-init">
             <div class="home-slide">
               <!-- Imagem principal da seção inicial -->
-              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/2.png' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/paraiso_azul_home.jpg' ) }}" alt="Imagens de Hotéis">
             </div>
   
             <div class="home-text">
@@ -64,7 +64,7 @@
             {% for hotel in hotel %}
             <div class="card">
               <!-- Imagem do hotel -->
-              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
+              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_home) }}" alt="Imagem do hotel">
               
               <!-- Nome do hotel -->
               <h2 class="nome-card-home">{{ hotel.nome }}</h2>
@@ -85,7 +85,7 @@
         <section>
           <div class="home-end">
             <div class="home-end-slide">
-              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/4.png' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/paraiso_azul_home.jpg' ) }}" alt="Imagens de Hotéis">
             </div>
 
             <div class="home-text">
@@ -101,7 +101,7 @@
             {% for hotel in hotel %}
             <div class="card">
               <!-- Imagem do hotel -->
-              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_entrada) }}" alt="Imagem do hotel">
+              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_home) }}" alt="Imagem do hotel">
               
               <!-- Nome do hotel -->
               <h2 class="nome-card-home">{{ hotel.nome }}</h2>
