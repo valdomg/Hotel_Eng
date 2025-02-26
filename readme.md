@@ -30,14 +30,14 @@ pip install flask-mysql-connector
 ### **5. Criar o Banco de Dados MYSQL**
 1. Instale o MySQL e crie um banco de dados:
 ```bash
-Copiar e colar o Schema.db
+Copiar e colar o schema_teste.db e insert.db
 ```
 2. Configure as credenciais no arquivo `.env` (crie este arquivo se não existir):
 ```ini
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=sua_senha
-DB_NAME=hotel_management
+DB_NAME=hotel_teste
 ```
 
 ### **6. Executar o Servidor**
@@ -47,9 +47,9 @@ flask run
 Acesse o sistema em `http://127.0.0.1:5000/`.
 
 ## **Funcionalidades**
-- Cadastro e login de usuários
-- Listagem de hotéis disponíveis
-- Gerenciamento de clientes e quartos
-- Sistema de reservas
-- Check-in e check-out
+- Cadastro e login de usuários - a fazer
+- Listagem de hotéis disponíveis -  a fazer
+- Gerenciamento de clientes - a fazer
+- Sistema de reservas - a fazer
+- Check-in e check-out - a fazer
 
