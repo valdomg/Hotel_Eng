@@ -36,9 +36,21 @@
         <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
       </div>
 
+      <div class="navbar-col">
+        <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+      </div>
+
       <!-- Link para a página de login -->
       <div class="navbar-col login">
-        <a href="#">Login</a>
+
+        {% if session['loggedin'] == True %}
+          <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+        {% elif session['loggedin'] == False %}
+          <a href="{{ url_for('login' ) }}">Login</a>
+        {% else %}
+          <a href="{{ url_for('login' ) }}">Login</a>
+        {% endif %}
+        
       </div>
     </div>
   </header>
@@ -76,19 +88,36 @@
           </div>
 
           <div class="preco-btn">
-            <button class="btn-reserve" type="button">RESERVE AGORA!</button>
+            <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho({{hotelCarac.id}})">RESERVE AGORA!</button>
           </div>
           
+          
         </div>
+    
       </div>
 
       
-
-    
+      
   </main>
 
   <footer>
     aaaaaaaaaaa
   </footer>
 </body>
+
+
+<script>
+function adicionarAoCarrinho(hospedagem_id) {
+    fetch("/adicionar_carrinho", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hospedagem_id: hospedagem_id })
+    })
+    .then(response => response.json())
+    .then(data => alert(data.mensagem))
+    .catch(error => console.error("Erro:", error));
+}
+</script>
+
+
 </html>

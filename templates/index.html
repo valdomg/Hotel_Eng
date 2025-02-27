@@ -35,9 +35,21 @@
           <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
         </div>
 
+        <div class="navbar-col">
+          <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+        </div>
+
         <!-- Link para a página de login -->
         <div class="navbar-col login">
-          <a href="{{ url_for('login' ) }}">Login</a>
+
+          {% if session['loggedin'] == True %}
+            <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+          {% elif session['loggedin'] == False %}
+            <a href="{{ url_for('login' ) }}">Login</a>
+          {% else %}
+            <a href="{{ url_for('login' ) }}">Login</a>
+          {% endif %}
+          
         </div>
       </div>
     </header>
@@ -56,8 +68,8 @@
             </div>
           </div>
         </section>
-
-        <!-- Seção de cartões para exibição dos hotéis -->
+        
+        <!-- Seção de cartões para exi  bição dos hotéis -->
         <section>
           <div class="card-grid">
             
@@ -71,6 +83,8 @@
               
               <!-- Localização do hotel -->
               <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
+
+              <h3 class="preco-home">R$ {{hotel.preco_diaria}} /dia</h3>
               
               <!-- Botão para visualizar mais detalhes do hotel -->
               <a class="a-card-home" href="{{ url_for('hotelPagina', id=hotel.id ) }}">

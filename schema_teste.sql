@@ -76,3 +76,14 @@ CREATE TABLE reserva_residencia(
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (residencia_id) REFERENCES residencia(id) ON DELETE CASCADE
 );
+
+CREATE TABLE carrinho (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    hospedagem_id INT NOT NULL,
+    quantidade INT DEFAULT 1,
+    preco_total DECIMAL(10,2),
+    data_adicionado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES users(id),
+    FOREIGN KEY (hospedagem_id) REFERENCES hoteis(id)
+);

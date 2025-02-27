@@ -25,3 +25,10 @@ VALUES
 
 ('Flat Executivo', 'Brasília, DF', 350.00, 'flat_home.jpg', 'flat_patrocinado.jpg', 'flat_quarto.jpg', 'flat_fachada.jpg', 'flat_lazer.jpg', 'Flat mobiliado no centro de Brasília, ideal para estadias curtas e longas. Inclui serviço de limpeza e estacionamento.', 'Flat');
 */
+
+/*Inserção de usuários*/
+INSERT INTO users(nome, email, senha) VALUES 
+('valdemiro', 'valdom123@gmail.com', '123');
+
+INSERT INTO users(nome, email, senha) VALUES 
+('gabriel', 'gabriel123@gmail.com', '123');
