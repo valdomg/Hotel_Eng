@@ -81,9 +81,9 @@ CREATE TABLE carrinho (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
     hospedagem_id INT NOT NULL,
+    tipo_hospedagem ENUM('hotel', 'residencia') NOT NULL, -- Define se é um hotel ou residência
     quantidade INT DEFAULT 1,
     preco_total DECIMAL(10,2),
     data_adicionado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES users(id),
-    FOREIGN KEY (hospedagem_id) REFERENCES hoteis(id)
+    FOREIGN KEY (usuario_id) REFERENCES users(id)
 );
