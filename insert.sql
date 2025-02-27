@@ -1,5 +1,5 @@
 -- Inserções na tabela hoteis
-INSERT INTO hoteis (nome, localizacao, preco_diaria, hotel_img_home, hotel_img_home_patrocinado, hotel_img_page_hotelhotel_img_page_hotel, hotel_img_quarto, hotel_img_area_lazer, descricao, categoria) 
+INSERT INTO hoteis (nome, localizacao, preco_diaria, hotel_img_home, hotel_img_home_patrocinado, hotel_img_page_hotel, hotel_img_quarto, hotel_img_area_lazer, descricao, categoria) 
 VALUES
 ('Hotel Paraíso Azul', 'Rio de Janeiro, RJ', 450.00, 'imagens/hoteis/paraiso_azul_home.jpg', 'imagens/patrocinado/paraiso_azul_patrocinado.jpg', 'imagens/quarto/paraiso_azul_page.jpg', 'imagens/area_lazer/paraiso_azul_quarto.jpg', 'paraiso_azul_lazer.jpg', 'Localizado à beira-mar, o Hotel Paraíso Azul oferece suítes confortáveis com vista panorâmica. Ideal para quem busca descanso e sofisticação.', 'Hotel de luxo'),
 
