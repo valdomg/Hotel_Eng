@@ -84,6 +84,7 @@ def login():
             msg = 'Dados Incorretos'
 
     return render_template('login.html', msg=msg)
+
 '''Page usuario'''
 @app.route('/usuario/<int:id>', methods=['GET'])
 def usuario(id):
@@ -100,16 +101,26 @@ def usuario(id):
 @app.route("/adicionar_carrinho", methods=["POST"])
 def adicionar_carrinho():
     if "id" not in session:
-        return jsonify({"erro": "Usuário não autenticado"}), 401
+        return redirect(url_for('home'))
 
     usuario_id = session["id"]
     hospedagem_id = request.json.get("hospedagem_id")
     quantidade = request.json.get("quantidade", 1)
+    tipo_hospedagem = request.json.get("tipo_hospedagem")
+
+    print(tipo_hospedagem)
 
     cursor = MYSQL_CONNECTION.cursor(dictionary=True)
 
     # Obtendo o preço da hospedagem
-    cursor.execute("SELECT preco_diaria FROM hoteis WHERE id = %s", (hospedagem_id,))
+    if tipo_hospedagem == 'hotel':  
+        cursor.execute("SELECT preco_diaria FROM hoteis WHERE id = %s", (hospedagem_id,))
+    elif tipo_hospedagem == 'residencia':
+        cursor.execute("SELECT preco_diaria FROM residencia WHERE id = %s", (hospedagem_id,))
+    else:
+        resultado = None
+    
+
     resultado = cursor.fetchone()
     
     
@@ -121,14 +132,15 @@ def adicionar_carrinho():
 
     # Inserir no carrinho
     cursor.execute(
-        "INSERT INTO carrinho (usuario_id, hospedagem_id, quantidade, preco_total) VALUES (%s, %s, %s, %s)",
-        (usuario_id, hospedagem_id, quantidade, preco_total)
+        "INSERT INTO carrinho (usuario_id, hospedagem_id, tipo_hospedagem ,quantidade, preco_total) VALUES (%s, %s, %s, %s, %s)",
+        (usuario_id, hospedagem_id, tipo_hospedagem ,quantidade, preco_total)
     )
 
     
     MYSQL_CONNECTION.commit()
     cursor.close()
     return jsonify({"mensagem": "Item adicionado ao carrinho!"})
+
 '''
 @app.route("/carrinho", methods=["GET"])
 def ver_carrinho():
@@ -156,17 +168,20 @@ def ver_carrinho():
 
 @app.route("/remover_carrinho/<int:item_id>", methods=["DELETE"])
 def remover_carrinho(item_id):
-    if "usuario_id" not in session:
+    if "id" not in session:
         return jsonify({"erro": "Usuário não autenticado"}), 401
     try:
         cursor = MYSQL_CONNECTION.cursor(dictionary=True)
-        cursor.execute("DELETE FROM carrinho WHERE id = %s", (item_id,))
+        cursor.execute("DELETE FROM carrinho WHERE id = %s ", (item_id,))
         MYSQL_CONNECTION.commit()
         cursor.close()
+        return jsonify({"success": True, "message": "Item removido com sucesso!"})
+
+    
     except mysql as error:
         return f"falise to delete tables in MYSQL: {error}"
 
-    return jsonify({"mensagem": "Item removido do carrinho!"})
+    return redirect(url_for('carrinho'))
 
 
 
@@ -178,17 +193,32 @@ def carrinho():
     
     cursor = MYSQL_CONNECTION.cursor(dictionary=True)
     query = """
-        SELECT 
-        carrinho.id, carrinho.preco_total, 
-        hoteis.nome, hoteis.localizacao, hoteis.preco_diaria, hoteis.hotel_img_home
-        FROM carrinho
-        JOIN hoteis ON carrinho.hospedagem_id = hoteis.id
-        WHERE carrinho.usuario_id = %s
+       SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
+       h.nome AS hospedagem_nome, h.localizacao, h.preco_diaria, 
+       h.hotel_img_home AS img_home, h.hotel_img_quarto AS img_quarto, 
+       h.hotel_img_area_lazer AS img_area_lazer, h.categoria, 'hotel' AS tipo
+        FROM carrinho c
+        JOIN hoteis h ON c.hospedagem_id = h.id
+
+        UNION
+
+        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
+            r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
+            r.residencia_img_home AS img_home, r.residencia_img_quarto AS img_quarto, 
+            r.residencia_img_area_lazer AS img_area_lazer, r.categoria, 'residencia' AS tipo
+        FROM carrinho c
+        JOIN residencia r ON c.hospedagem_id = r.id
+
+        WHERE c.usuario_id = %s;
+
+
          """
     cursor.execute(query, (id,))
+    
     hoteis_no_carrinho = cursor.fetchall()
-    cursor.close()
     print(hoteis_no_carrinho)
+    cursor.close()
+    
 
 
     return render_template('pageCarrinho.html', hotelCarrinho=hoteis_no_carrinho)
@@ -214,6 +244,10 @@ Yara
 '''
 
 '''
+Rota de admin
+'''
+
+'''
 Rota de hotel
 '''
 @app.route('/hotel/<int:id>', methods = ['GET'])
@@ -225,7 +259,7 @@ def hotelPagina(id):
             cursor.execute(f'SELECT * FROM hoteis WHERE id = {id}')
             hotelCarac = cursor.fetchone()
             cursor.close()
-            print(hotelCarac)
+            
     except mysql as error:
         return f"falise to acess tables in MYSQL: {error}"
     
