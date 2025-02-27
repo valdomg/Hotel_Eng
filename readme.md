@@ -14,7 +14,7 @@ cd Hotel_Eng
 ```bash
 python -m venv venv
 source venv/bin/activate  # Para Linux/Mac
-venv\Scripts\activate     # Para Windows
+.venv\Scripts\activate     # Para Windows
 ```
 
 ### **3. Instalar Flask**
@@ -22,10 +22,11 @@ venv\Scripts\activate     # Para Windows
 pip install Flask
 ```
 
-### **4. Instalar MySQlConnector**
+### **4. Instalar DotEnv, MySQlConnector e MySQLDB**
 ```bash
 pip install flask-mysqldb
 pip install flask-mysql-connector
+pip install python-dontenv
 ```
 
 ### **5. Criar o Banco de Dados MYSQL**
@@ -35,17 +36,19 @@ Copiar e colar o schema_teste.db e insert.db
 ```
 2. Configure as credenciais no arquivo `.env` (crie este arquivo se não existir):
 ```ini
-pip install python-dontenv
-
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=sua_senha
-DB_NAME=hotel_teste
+DB_DATABASE=hotel_teste
+SECRET_KEY=alguma_coisa
 ```
 
 ### **6. Executar o Servidor**
 ```bash
 py app.py
+```
+```bash
+python app.py
 ```
 Acesse o sistema em `http://127.0.0.1:5000/`.
 
