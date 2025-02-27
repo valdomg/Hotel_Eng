@@ -1,8 +1,34 @@
 # Sistema de Gerenciamento de Hospedagens
 
-Este é um sistema web para gerenciamento de hospedagens em hotéis, desenvolvido com Flask e MySQL.
+#  Nome do Projeto
+Sistema de Gerenciamento de Hospedagens
+
+##  Descrição do Problema e Solução Proposta
+O problema abordado pelo projeto é a dificuldade dos usuários em encontrar, reservar e gerenciar hospedagens de maneira prática e eficiente. Muitos sistemas atuais são confusos e não oferecem uma boa experiência ao usuário.
+
+A solução proposta é um sistema web intuitivo que permite aos usuários visualizar hotéis e residências disponíveis, adicionar hospedagens ao carrinho e realizar reservas com facilidade. O sistema também conta com um painel de usuário para gerenciar pedidos e um sistema de login seguro.
+
+---
+
+##  Tecnologias Utilizadas
+- **Linguagem Back-end:** Python (Flask)
+- **Banco de Dados:** MySQL
+- **Front-end:** HTML, CSS (Grid), JavaScript
+- **Gerenciamento de Pacotes:** pip, virtualenv
+- **Autenticação:** Flask Session
+- **Versionamento:** Git & GitHub
+
+---
 
 ## **Instalação e Configuração**
+
+##  Instruções de Instalação e Uso
+
+###  Pré-requisitos
+- Python 3 instalado
+- MySQL instalado e configurado
+- Gerenciador de pacotes `pip`
+
 
 ### **1. Clonar o Repositório**
 ```bash
@@ -129,4 +155,21 @@ MYSQL_CONNECTION = mysql.connector.connect(
 - O `session` é utilizado para gerenciar a autenticação dos usuários.
 - As variáveis de ambiente devem ser definidas no `.env`.
 - O `debug=True` está ativado para facilitar o desenvolvimento.
+
+
+## 🤝 Como Contribuir
+1. Faça um fork do projeto
+2. Crie um branch para sua funcionalidade (`git checkout -b minha-funcionalidade`)
+3. Faça commit das suas mudanças (`git commit -m 'Adicionei minha funcionalidade'`)
+4. Envie para o repositório (`git push origin minha-funcionalidade`)
+5. Abra um Pull Request
+
+---
+
+## 👥 Integrantes do Grupo
+- **Paulo Braga** - Desenvolvedor
+- **Valdemiro Gabriel** - Desenvolvedor
+- **Yara Beatriz** - Desenvolvedor
+
+Caso tenha dúvidas ou sugestões, sinta-se à vontade para entrar em contato! 😃
 
