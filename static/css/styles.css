@@ -464,6 +464,11 @@ footer {}
     background: rgb(200, 50, 50);
 }
 
+.carrinho-vazio{
+    font-size: 40px;
+    font-weight: bolder;
+    color: rgb(177, 194, 158);
+}
 
 
 
@@ -482,6 +487,7 @@ footer {}
 
     .pesquisa {
         width: 100%;
+        grid-column: 2/3;
         height: 40px;
         font-size: 16px;
     }

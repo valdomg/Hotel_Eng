@@ -88,7 +88,13 @@
           </div>
 
           <div class="preco-btn">
-            <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho({{hotelCarac.id}})">RESERVE AGORA!</button>
+
+            {% if session['loggedin'] == True %}
+              <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho({{hotelCarac.id}} ,  'hotel')">RESERVE AGORA!</button>
+            {% else %}
+              <a href="{{ url_for('login' ) }}"><button class="btn-reserve" type="button">RESERVE AGORA!</button></a>
+            {% endif %}
+            
           </div>
           
           
@@ -106,18 +112,7 @@
 </body>
 
 
-<script>
-function adicionarAoCarrinho(hospedagem_id) {
-    fetch("/adicionar_carrinho", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ hospedagem_id: hospedagem_id })
-    })
-    .then(response => response.json())
-    .then(data => alert(data.mensagem))
-    .catch(error => console.error("Erro:", error));
-}
-</script>
+<script src="{{ url_for('static', filename="/js/adicionarAoCarrinho.js" ) }}"></script>
 
 
 </html>
