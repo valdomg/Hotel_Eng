@@ -56,26 +56,28 @@
       
       {% if session['loggedin'] == True %}
       <main>
+        {% for hotel in hotelCarrinho %}
         <section>
           <div class="carrinho-container">
-            {% for hotelCarrinho in hotelCarrinho %}
+           
             <div class="card-carrinho">
-                <img src="{{ url_for('static', filename=hotelCarrinho.hotel_img_home ) }}" alt="Imagem do Hotel">
+                <img src="{{ url_for('static', filename=hotel.hotel_img_home ) }}" alt="Imagem do Hotel">
                 <div class="info">
-                    <h3>{{ hotelCarrinho.nome }}</h3>
-                    <p>{{ hotelCarrinho.localizacao }}</p>
-                    <p class="preco-diaria">R$ {{ hotelCarrinho.preco_diaria }}</p>
+                    <h3>{{ hotel.nome }}</h3>
+                    <p>{{ hotel.localizacao }}</p>
+                    <p class="preco-diaria">R$ {{ hotel.preco_diaria }}</p>
                   <h4 class="preco-total-valor">Total: R$ 0,00</h4>
-                    <p class="quantidade">Quantidade: {{ hotelCarrinho.quantidade }}</p>
+                    <p class="quantidade">Quantidade: {{ hotel.quantidade }}</p>
                     <form action="/remover_do_carrinho" method="POST">
-                        <input type="hidden" name="id_hotel" value="{{ hotelCarrinho.id }}">
+                        <input type="hidden" name="id_hotel" value="{{ hotel.id }}">
                         <button type="submit" class="remover">Remover</button>
                     </form>
                 </div>
             </div>
-            {% endfor %}
+            
           </div>
         </section>
+        {% endfor %}
       </main>
 
       {% else %}
@@ -85,19 +87,6 @@
     </div>
     
     <script>
-    function carregarCarrinho() {
-        fetch("/carrinho")
-        .then(response => response.json())
-        .then(itens => {
-            let lista = document.getElementById("lista-carrinho");
-            lista.innerHTML = "";
-            itens.forEach(item => {
-                lista.innerHTML += `<li>${item[1]} - ${item[2]} | ${item[3]} diárias - R$ ${item[4]}
-                    <button onclick="removerItem(${item[0]})">Remover</button></li>`;
-            });
-        });
-    }
-    
     function removerItem(id) {
         fetch(`/remover_carrinho/${id}`, { method: "DELETE" })
         .then(response => response.json())
