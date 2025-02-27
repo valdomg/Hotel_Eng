@@ -35,6 +35,10 @@
           <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
         </div>
 
+        <div class="navbar-col">
+          <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+        </div>
+
         <!-- Link para a página de login -->
         <div class="navbar-col login">
 
@@ -79,6 +83,8 @@
               
               <!-- Localização do hotel -->
               <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
+
+              <h3 class="preco-home">R$ {{hotel.preco_diaria}} /dia</h3>
               
               <!-- Botão para visualizar mais detalhes do hotel -->
               <a class="a-card-home" href="{{ url_for('hotelPagina', id=hotel.id ) }}">
