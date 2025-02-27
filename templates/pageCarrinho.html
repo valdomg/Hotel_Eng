@@ -34,6 +34,10 @@
           <div class="navbar-col quem-somos">
             <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
           </div>
+
+          <div class="navbar-col">
+            <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+          </div>
   
           <!-- Link para a página de login -->
           <div class="navbar-col login">
@@ -52,33 +56,56 @@
       
       {% if session['loggedin'] == True %}
       <main>
-        {% if condition %}
-            <section>
-                <div class="grid-carrinho">
-                    <div class="item-carrinho nome-carrinho">
-                        <img src="{{ url_for('static', filename=hotelCarrinho.hotel_img_page_hotel ) }}" alt="" srcset="">
-                    </div>
-                    <div class="item-carrinho nome-carrinho">
-                        <h1>{{hotelCarrinho.nome}}l</h1>
-                    </div>
-                    <div class="item-carrinho localizacao-carrinho">
-                        <h2>{{hotelCarrinho.localizacao}}</h2>
-                    </div>
-                    <div class="item-carrinho preco-carrinho">
-                        <h3>R${{hotelCarrinho.preco_diara}}</h3>
-                    </div>
+        <section>
+          <div class="carrinho-container">
+            {% for hotelCarrinho in hotelCarrinho %}
+            <div class="card-carrinho">
+                <img src="{{ url_for('static', filename=hotelCarrinho.hotel_img_home ) }}" alt="Imagem do Hotel">
+                <div class="info">
+                    <h3>{{ hotelCarrinho.nome }}</h3>
+                    <p>{{ hotelCarrinho.localizacao }}</p>
+                    <p class="preco-diaria">R$ {{ hotelCarrinho.preco_diaria }}</p>
+                  <h4 class="preco-total-valor">Total: R$ 0,00</h4>
+                    <p class="quantidade">Quantidade: {{ hotelCarrinho.quantidade }}</p>
+                    <form action="/remover_do_carrinho" method="POST">
+                        <input type="hidden" name="id_hotel" value="{{ hotelCarrinho.id }}">
+                        <button type="submit" class="remover">Remover</button>
+                    </form>
                 </div>
-            </section>
-        {% endif %}
-        <a href="{{ url_for('logout' ) }}" class="logout-link">Sair</a>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
       </main>
 
       {% else %}
         <img class="goku-careca" src="{{ url_for('static' , filename='imagens/teste/goku-careca.png' ) }}" alt="">
       {% endif %}
 
-      
-
+    </div>
+    
+    <script>
+    function carregarCarrinho() {
+        fetch("/carrinho")
+        .then(response => response.json())
+        .then(itens => {
+            let lista = document.getElementById("lista-carrinho");
+            lista.innerHTML = "";
+            itens.forEach(item => {
+                lista.innerHTML += `<li>${item[1]} - ${item[2]} | ${item[3]} diárias - R$ ${item[4]}
+                    <button onclick="removerItem(${item[0]})">Remover</button></li>`;
+            });
+        });
+    }
+    
+    function removerItem(id) {
+        fetch(`/remover_carrinho/${id}`, { method: "DELETE" })
+        .then(response => response.json())
+        .then(() => carregarCarrinho());
+    }
+    
+    carregarCarrinho();
+    </script>
       <footer>
 
       </footer>
