@@ -88,13 +88,11 @@
           </div>
 
           <div class="preco-btn">
-            <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho(1)">RESERVE AGORA!</button>
+            <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho({{hotelCarac.id}})">RESERVE AGORA!</button>
           </div>
           
           
         </div>
-
-        <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
     
       </div>
 
