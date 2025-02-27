@@ -186,12 +186,12 @@ def carrinho():
         WHERE carrinho.usuario_id = %s
          """
     cursor.execute(query, (id,))
-    hotelCarrinho = cursor.fetchall()
+    hoteis_no_carrinho = cursor.fetchall()
     cursor.close()
-    print(hotelCarrinho)
+    print(hoteis_no_carrinho)
 
 
-    return render_template('pageCarrinho.html', hotelCarrinho=hotelCarrinho)
+    return render_template('pageCarrinho.html', hotelCarrinho=hoteis_no_carrinho)
 
 
 '''rota de logout'''
