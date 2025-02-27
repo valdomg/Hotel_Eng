@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, session, url_for, jsonify
 import mysql.connector
 from flask_mysqldb import MySQL
-from flask_login import LoginManager, login_user, login_required, current_user
 
 from dotenv import load_dotenv
 import os
@@ -14,29 +13,16 @@ load_dotenv()
 
 app = Flask(__name__)
 MYSQL = MySQL(app)
-lm = LoginManager(app)
+
 app.secret_key = os.getenv('SECRET_KEY')
 
 MYSQL_CONNECTION = mysql.connector.connect(
     host= os.getenv('DB_HOST'),
     user= os.getenv('DB_USER'),
     password= os.getenv('DB_PASSWORD'),
-    database= os.getenv('DB_NAME')
+    database= os.getenv('DB_DATABASE')
 
 )
-
-#lm = LoginManager(app)
-
-
-@lm.user_loader
-def user_loader(id):
-    cursor = MYSQL_CONNECTION.cursor()
-    cursor.execute(f"SELECT *FROM users WHERE id={id}")
-    usuario = cursor.fetchone()
-    cursor.close()
-
-    return usuario
-
 
 '''
 Arquivos de rotas para as páginas
@@ -140,30 +126,6 @@ def adicionar_carrinho():
     MYSQL_CONNECTION.commit()
     cursor.close()
     return jsonify({"mensagem": "Item adicionado ao carrinho!"})
-
-'''
-@app.route("/carrinho", methods=["GET"])
-def ver_carrinho():
-    if "id" not in session:
-        return jsonify({"erro": "Usuário não autenticado"}), 401
-
-    usuario_id = session["id"]
-    try:
-        cursor = MYSQL_CONNECTION.cursor(dictionary=True)
-        cursor.execute("""
-            SELECT c.id, h.nome, h.localizacao, c.quantidade, c.preco_total 
-            FROM carrinho c 
-            JOIN hoteis h ON c.hospedagem_id = h.id
-            WHERE c.usuario_id = %s
-        """, (usuario_id,))
-        
-        itens = cursor.fetchall()
-        cursor.close()
-    except mysql as error:
-        return f"falise to load carrinho in MYSQL: {error}"
-
-    return jsonify(itens)
-'''
 
 
 @app.route("/remover_carrinho/<int:item_id>", methods=["DELETE"])
