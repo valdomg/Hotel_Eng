@@ -24,6 +24,7 @@ pip install Flask
 
 ### **4. Instalar MySQlConnector**
 ```bash
+pip install flask-mysqldb
 pip install flask-mysql-connector
 ```
 
@@ -34,6 +35,8 @@ Copiar e colar o schema_teste.db e insert.db
 ```
 2. Configure as credenciais no arquivo `.env` (crie este arquivo se não existir):
 ```ini
+pip install python-dontenv
+
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=sua_senha
