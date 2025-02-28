@@ -40,7 +40,7 @@ cd Hotel_Eng
 ```bash
 python -m venv venv
 source venv/bin/activate  # Para Linux/Mac
-.venv\Scripts\activate     # Para Windows
+venv\Scripts\activate     # Para Windows
 ```
 
 ### **3. Instalar Flask**
@@ -52,7 +52,7 @@ pip install Flask
 ```bash
 pip install flask-mysqldb
 pip install flask-mysql-connector
-pip install python-dontenv
+pip install python-dotenv
 ```
 
 ### **5. Criar o Banco de Dados MYSQL**
