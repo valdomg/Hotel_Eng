@@ -26,9 +26,6 @@ CREATE TABLE hoteis (
     
     hotel_img_home VARCHAR (255) ,
     hotel_img_home_patrocinado VARCHAR (255) ,
-    hotel_img_page_hotel VARCHAR(255) ,
-    hotel_img_quarto VARCHAR(255) ,
-    hotel_img_area_lazer VARCHAR(255) ,
     
     descricao TEXT NOT NULL,
     categoria ENUM('Hotel econômico', 'Hotel de luxo', 'Hotel resort', 'Hotel pousada') NOT NULL
@@ -43,12 +40,9 @@ CREATE TABLE residencia (
     
     residencia_img_home VARCHAR (255) ,
     residencia_img_home_patrocinado VARCHAR (255) ,
-    residencia_img_quarto VARCHAR(255) ,
-    residencia_img_fachada VARCHAR(255) ,
-    residencia_img_area_lazer VARCHAR(255) ,
     
     descricao TEXT NOT NULL,
-    categoria ENUM('Residência na praia', 'Sobrado', 'Bangalô', 'Apartamento', 'Flat') NOT NULL
+    categoria ENUM('Residência na Ilha', 'Casa Aquática', 'Casa', 'Casa com balão', 'Flat') NOT NULL
 );
 
 CREATE TABLE reserva_hotel(
@@ -87,3 +81,7 @@ CREATE TABLE carrinho (
     data_adicionado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES users(id)
 );
+
+
+
+
