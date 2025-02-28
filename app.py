@@ -83,9 +83,10 @@ def pesquisa():
     
     if termo == 'residencia' or termo == 'residência' or termo == 'residências':
         query = 'SELECT id, nome, localizacao, preco_diaria, residencia_img_home AS img_home FROM residencia'
-    if termo == 'hotel' or termo == 'hoteis' or termo == 'hotéis':
+    elif termo == 'hotel' or termo == 'hoteis' or termo == 'hotéis':
         query = 'SELECT id, nome, localizacao, preco_diaria, hotel_img_home AS img_home FROM hoteis'
-   
+    else:
+        return redirect(url_for('home'))
     cursor = MYSQL_CONNECTION.cursor(dictionary=True)
     cursor.execute(query)
     pesquisa = cursor.fetchall()

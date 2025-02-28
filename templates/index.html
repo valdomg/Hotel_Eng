@@ -133,6 +133,8 @@
               <!-- Localização do hotel -->
               <p class="local-card-home"><strong>Localização:</strong> {{ residencias.localizacao }}</p>
               
+              <h3 class="preco-home">R$ {{residencias.preco_diaria}} /dia</h3>
+
               <!-- Botão para visualizar mais detalhes do hotel -->
               <a class="a-card-home" href="{{ url_for('residenciaPagina', id=residencias.id ) }}">
                 <button class="btn-card-home" type="button">Conferir!</button>
