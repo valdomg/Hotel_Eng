@@ -457,6 +457,10 @@ footer {}
             text-decoration: underline;
         }
     }
+
+    .img-redefinir{
+        margin: auto;
+    }
 }
 
 /*Estilização para a página de carrinho*/
