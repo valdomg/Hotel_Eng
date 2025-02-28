@@ -81,7 +81,7 @@
             <h3>{{ hotel.hospedagem_nome }}</h3>
             <p>{{ hotel.localizacao }}</p>
             <h4 class="preco-total-valor">R$ {{ hotel.preco_diaria }}</h4>
-  
+              <h5 class="descricao-carrinho">{{hotel.descricao}}</h5>
             
             <button type="button" class="remover" onclick="removerItem({{hotel.carrinho_id}})">
               Remover
