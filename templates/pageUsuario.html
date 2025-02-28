@@ -38,7 +38,9 @@
           </div>
 
           <div class="navbar-col">
-            <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+            <a href="{{ url_for('carrinho' ) }}">
+              <img src="{{ url_for('static', filename='imagens_uso_geral/bag.png' ) }}" alt="" srcset="">
+            </a>
           </div>
   
           <!-- Link para a página de login -->
@@ -56,9 +58,38 @@
         </div>
     </header>
 
-      <h1>{{usuario.nome}}</h1>
+    <main>
+      <div class="dashboard">
+        <h2>Bem-vindo, {{usuario.nome}}!</h2>
+    
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Reservas Ativas</h3>
+                <p>3</p>
+            </div>
+    
+            <div class="card">
+                <h3>Mensagens</h3>
+                <p>1 nova</p>
+            </div>
+    
+            <div class="card">
+                <h3>Configurações</h3>
+                <a href="#">Editar Perfil</a>
+            </div>
+        </div>
 
-      <a href="{{ url_for('logout' ) }}">Sair</a>
+        <div class="form-group-btn btn-logout">
+          <a href="{{ url_for('logout' ) }}">
+            Sair
+          </a>
+        </div>
+        
+    </div>
+    
+    </main>
+
+      
       <footer>
 
       </footer>

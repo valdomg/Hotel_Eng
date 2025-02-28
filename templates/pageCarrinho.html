@@ -40,7 +40,9 @@
       </div>
 
       <div class="navbar-col">
-        <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+        <a href="{{ url_for('carrinho' ) }}">
+          <img src="{{ url_for('static', filename='imagens_uso_geral/bag.png' ) }}" alt="" srcset="">
+        </a>
       </div>
 
       <!-- Link para a página de login -->
@@ -65,10 +67,9 @@
         <div class="card-carrinho">
           <div class="info">
             <h1 class="carrinho-vazio">Carrinho Vazio! ˙◠˙</h1>
-            <h3>Adicione itens!</h2>
+            <h3 class="add-vazio">Adicione itens!</h2>
           </div>
         </div>
-        
       </div>
     {% else %}
     {% for hotel in hotelCarrinho %}
