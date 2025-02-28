@@ -128,8 +128,8 @@ footer {}
 
 .card-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    /*grid-template-rows: auto auto auto auto;*/
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
     justify-content: center;
     gap: 2vw;
     border-style: hidden;
@@ -157,11 +157,19 @@ footer {}
 
 .card-grid .card:first-child {
     grid-column: 1/4;
-
+    
 }
 
+.card-grid .card:nth-child(2){
+    grid-column: 4/6;
+    
+}
+
+
+
+
 .card-grid .card:first-child .img-card-home {
-    height: 200px;
+    height: 380px;
 
 }
 
@@ -468,7 +476,7 @@ footer {}
     padding: 15px;
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    
 }
 
 .card-carrinho img {
@@ -483,8 +491,9 @@ footer {}
 }
 
 .card-carrinho h3 {
-    font-size: 18px;
-    color: #333;
+    font-size: 25px;
+    font-weight: bolder;
+    color: rgb(177, 194, 158);
     margin-bottom: 5px;
 }
 
@@ -493,12 +502,19 @@ footer {}
     color: #666;
 }
 
-.card-carrinho .preco {
-    font-size: 16px;
+.card-carrinho .preco-total-valor {
+    font-size: 25px;
     font-weight: bold;
-    color: rgb(240, 160, 75);
+    color:rgb(177, 194, 158);
     margin: 10px 0;
 }
+
+.card-carrinho .descricao-carrinho{
+    font-size: 15px;
+    color:rgb(0, 0, 0);
+    margin: 10px 0;
+}
+
 
 .card-carrinho .quantidade {
     font-size: 14px;
@@ -507,6 +523,7 @@ footer {}
 
 .card-carrinho .remover {
     background: rgb(240, 70, 70);
+    display: flex;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -514,6 +531,7 @@ footer {}
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    justify-self: end; /* Alinha à direita */
 }
 
 .card-carrinho .remover:hover {
