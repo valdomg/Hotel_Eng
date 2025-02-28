@@ -107,8 +107,8 @@ MYSQL_CONNECTION = mysql.connector.connect(
 
 ### 1. Home (`/`)
 - **Método:** `GET`
-- **Descrição:** Exibe a página inicial, listando todos os hoteis cadastrados.
-- **Retorno:** Renderiza `index.html` com os dados dos hoteis.
+- **Descrição:** Exibe a página inicial, listando todos os hotéis e residências cadastrados.
+- **Retorno:** Renderiza `index.html` com os dados dos hotéis e residências.
 
 ### 2. Login (`/login`)
 - **Método:** `GET, POST`
@@ -116,40 +116,64 @@ MYSQL_CONNECTION = mysql.connector.connect(
 - **Entrada:** `email` e `senha` via `POST`.
 - **Saída:** Redireciona para a home se autenticado, ou exibe mensagem de erro.
 
-### 3. Página do Usuário (`/usuario/<int:id>`)
+### 3. Pesquisa (`/pesquisa`)
+- **Método:** `GET`
+- **Descrição:** Permite pesquisar hotéis e residências pelo nome.
+- **Entrada:** Parâmetro `termo` na URL.
+- **Saída:** Renderiza `pagePesquisa.html` com os resultados da pesquisa.
+
+### 4. Página do Usuário (`/usuario/<int:id>`)
 - **Método:** `GET`
 - **Descrição:** Exibe os dados do usuário baseado no `id`.
 - **Saída:** Renderiza `pageUsuario.html` com os dados do usuário.
 
-### 4. Adicionar ao Carrinho (`/adicionar_carrinho`)
+### 5. Adicionar ao Carrinho (`/adicionar_carrinho`)
 - **Método:** `POST`
 - **Descrição:** Adiciona um item ao carrinho do usuário logado.
 - **Entrada:** `hospedagem_id`, `quantidade`, `tipo_hospedagem`.
 - **Saída:** JSON com mensagem de sucesso.
 
-### 5. Remover do Carrinho (`/remover_carrinho/<int:item_id>`)
+### 6. Remover do Carrinho (`/remover_carrinho/<int:item_id>`)
 - **Método:** `DELETE`
 - **Descrição:** Remove um item do carrinho baseado no `item_id`.
 - **Saída:** JSON confirmando remoção.
 
-### 6. Ver Carrinho (`/ver_carrinho`)
+### 7. Ver Carrinho (`/ver_carrinho`)
 - **Método:** `GET`
 - **Descrição:** Retorna os itens do carrinho do usuário.
 - **Saída:** Renderiza `pageCarrinho.html` com os itens.
 
-### 7. Logout (`/logout`)
+### 8. Logout (`/logout`)
 - **Método:** `GET`
 - **Descrição:** Remove os dados da sessão do usuário e redireciona para a home.
 
-### 8. Página do Hotel (`/hotel/<int:id>`)
+### 9. Cadastro de Usuário (`/cadastro`)
+- **Método:** `GET, POST`
+- **Descrição:** Permite o cadastro de novos usuários.
+- **Entrada:** `nome`, `email`, `senha` via `POST`.
+- **Saída:** Redireciona para a página de login.
+
+### 10. Recuperação de Senha (`/redefinir-senha` e `/definir-senha`)
+- **Método:** `GET, POST`
+- **Descrição:** Permite a redefinição de senha do usuário.
+- **Entrada:** `email`, `nova_senha` via `POST`.
+- **Saída:** Atualiza a senha e redireciona para login.
+
+### 11. Página do Hotel (`/hotel/<int:id>`)
 - **Método:** `GET`
 - **Descrição:** Exibe detalhes de um hotel baseado no `id`.
 - **Saída:** Renderiza `paginaHotel.html`.
 
-### 9. Quem Somos (`/QuemSomos`)
+### 12. Página da Residência (`/residencia/<int:id>`)
+- **Método:** `GET`
+- **Descrição:** Exibe detalhes de uma residência baseada no `id`.
+- **Saída:** Renderiza `paginaResidencia.html`.
+
+### 13. Quem Somos (`/QuemSomos`)
 - **Método:** `GET`
 - **Descrição:** Exibe a página "Quem Somos".
 - **Saída:** Renderiza `quemSomos.html`.
+
 
 ## Notas Finais
 - O `session` é utilizado para gerenciar a autenticação dos usuários.
@@ -157,7 +181,7 @@ MYSQL_CONNECTION = mysql.connector.connect(
 - O `debug=True` está ativado para facilitar o desenvolvimento.
 
 
-## 🤝 Como Contribuir
+## Como Contribuir
 1. Faça um fork do projeto
 2. Crie um branch para sua funcionalidade (`git checkout -b minha-funcionalidade`)
 3. Faça commit das suas mudanças (`git commit -m 'Adicionei minha funcionalidade'`)
@@ -166,7 +190,7 @@ MYSQL_CONNECTION = mysql.connector.connect(
 
 ---
 
-## 👥 Integrantes do Grupo
+## Integrantes do Grupo
 - **Paulo Braga** - Desenvolvedor
 - **Valdemiro Gabriel** - Desenvolvedor
 - **Yara Beatriz** - Desenvolvedor
