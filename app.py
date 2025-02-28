@@ -34,11 +34,15 @@ def home():
         cursor = MYSQL_CONNECTION.cursor(dictionary=True)
         cursor.execute("SELECT *FROM hoteis")
         hotel = cursor.fetchall()
+       
+        cursor.execute("SELECT *FROM residencia")
+        residencias = cursor.fetchall()
         cursor.close()
+        
     except Exception:
         return f"falise to acess tables in MYSQL"
 
-    return render_template('index.html', hotel = hotel)
+    return render_template('index.html', hotel = hotel, residencias = residencias)
 
 '''
 Rota de login
@@ -88,7 +92,7 @@ def pesquisa():
     print(pesquisa)
     cursor.close()
 
-    return render_template('pagePesquisa.html', pesquisa=pesquisa )
+    return render_template('pagePesquisa.html', pesquisa=pesquisa, termo=termo )
 
 '''Page usuario'''
 @app.route('/usuario/<int:id>', methods=['GET'])
