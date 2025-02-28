@@ -169,7 +169,14 @@ def remover_carrinho(item_id):
     return redirect(url_for('carrinho'))
 
 
+'''        UNION
 
+        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
+            r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
+            r.residencia_img_home AS img_home, r.categoria, r.descricao,'residencia' AS tipo
+        FROM carrinho c
+        JOIN residencia r ON c.hospedagem_id = r.id
+'''
 @app.route('/ver_carrinho', methods=['GET', 'POST'])
 def carrinho():
     if 'id' not in session:
@@ -183,14 +190,6 @@ def carrinho():
        h.hotel_img_home AS img_home, h.categoria, h.descricao , 'hotel' AS tipo
         FROM carrinho c
         JOIN hoteis h ON c.hospedagem_id = h.id
-
-        UNION
-
-        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
-            r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
-            r.residencia_img_home AS img_home, r.categoria, r.descricao,'residencia' AS tipo
-        FROM carrinho c
-        JOIN residencia r ON c.hospedagem_id = r.id
 
         WHERE c.usuario_id = %s;
 
