@@ -120,19 +120,19 @@
         <section>
           <div class="card-grid">
             
-            {% for hotel in hotel %}
+            {% for residencia in residencia %}
             <div class="card">
               <!-- Imagem do hotel -->
-              <img class="img-card-home" src="{{ url_for('static', filename=hotel.hotel_img_home) }}" alt="Imagem do hotel">
+              <img class="img-card-home" src="{{ url_for('static', filename=residencia.hotel_img_home) }}" alt="Imagem do hotel">
               
               <!-- Nome do hotel -->
               <h2 class="nome-card-home">{{ hotel.nome }}</h2>
               
               <!-- Localização do hotel -->
-              <p class="local-card-home"><strong>Localização:</strong> {{ hotel.localizacao }}</p>
+              <p class="local-card-home"><strong>Localização:</strong> {{ residencia.localizacao }}</p>
               
               <!-- Botão para visualizar mais detalhes do hotel -->
-              <a class="a-card-home" href="{{ url_for('hotelPagina', id=hotel.id ) }}">
+              <a class="a-card-home" href="{{ url_for('hotelPagina', id=residencia.id ) }}">
                 <button class="btn-card-home" type="button">Conferir!</button>
               </a> 
             </div>
