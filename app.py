@@ -204,7 +204,27 @@ Paulo Braga
 Rota de recuperação de senha
 Yara
 '''
+@app.route("/redefinir-senha", methods=["GET"])
+def redefinir_senha():
+    return render_template("redefinir_senha.html")
 
+@app.route("/definir-senha", methods=["POST"])
+def definir_senha():
+    email = request.form['email']
+    nova_senha = request.form['senha']
+    
+    # Criptografar a senha (se necessário)
+    # nova_senha = bcrypt.generate_password_hash(nova_senha).decode('utf-8')
+    
+    cursor = MYSQL_CONNECTION.cursor()
+    
+    query = "UPDATE users SET senha = %s WHERE email = %s"
+    cursor.execute(query, (nova_senha, email))
+    
+    MYSQL_CONNECTION.commit()
+    cursor.close()
+    
+    return redirect(url_for('login'))
 '''
 Rota de admin
 '''
