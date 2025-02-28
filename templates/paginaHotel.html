@@ -57,11 +57,11 @@
 
   <main>
 
-      <div class="home-init page-hotel">
-        <div class="home-slide page-hotel">
-          <img class="img-home-end page-hotel" src="{{ url_for('static', filename=hotelCarac.hotel_img_home ) }}" alt="Imagens de Hotéis">
-        </div>
+      
+      <div class="page-hotel-slide">
+        <img class="img-page-hotel" src="{{ url_for('static', filename=hotelCarac.hotel_img_home ) }}" alt="Imagens de Hotéis">
       </div>
+
 
       <div class="grid-page-hotel">
         <div class="grid-item">
@@ -74,12 +74,8 @@
           </div>
 
           <div class="page-hotel-descricao">
-            {{hotelCarac.descricao}}Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Voluptates totam nisi illo quisquam Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Ipsa nulla, neque eligendi mollitia dicta officiis illum esse explicabo atque qui unde nihil
-              odio adipisci eos consequatur placeat quo! Ducimus, dolores! Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Sequi neque reiciendis quo vero animi, autem ipsa corrupti veniam suscipit. 
-              Dignissimos nesciunt et quisquam maxime enim optio eius odit mollitia fugiat!
+            {{hotelCarac.descricao}}
+            
           </div>
         </div>
         <div class="grid-item preco preco-grid">
@@ -107,7 +103,7 @@
   </main>
 
   <footer>
-    aaaaaaaaaaa
+    
   </footer>
 </body>
 
