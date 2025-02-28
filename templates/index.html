@@ -43,7 +43,7 @@
         <div class="navbar-col login">
 
           {% if session['loggedin'] == True %}
-            <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+            <a class="nome-usuario" href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
           {% elif session['loggedin'] == False %}
             <a href="{{ url_for('login' ) }}">Login</a>
           {% else %}
@@ -61,6 +61,9 @@
             <div class="home-slide">
               <!-- Imagem principal da seção inicial -->
               <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/paraiso_azul_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/economico_centro_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/resort_tropical_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide" src="{{ url_for('static', filename='imagens/hoteis/sol_nascente_home.jpg' ) }}" alt="Imagens de Hotéis">
             </div>
   
             <div class="home-text">
@@ -100,6 +103,9 @@
           <div class="home-end">
             <div class="home-end-slide">
               <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/paraiso_azul_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/economico_centro_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/resort_tropical_home.jpg' ) }}" alt="Imagens de Hotéis">
+              <img class="img-home-slide-end" src="{{ url_for('static', filename='imagens/hoteis/sol_nascente_home.jpg' ) }}" alt="Imagens de Hotéis">
             </div>
 
             <div class="home-text">
