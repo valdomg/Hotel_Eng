@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa</title>
+
+    <!-- Importação do Bootstrap para estilização -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importação da fonte Open Sans do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+
+    <!-- Importação do arquivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR (Barra de Navegação) -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-col logo">
+                <!-- Link para a página inicial com a logo -->
+                <a href="{{ url_for('home' ) }}">
+                    <img class="img-logo-nav" src="{{ url_for('static', filename='imagens/logo/logo.png' ) }}"
+                        alt="Logo">
+                </a>
+            </div>
+
+            <!-- Campo de pesquisa na navbar -->
+            <div class="navbar-col pesquisa">
+                <form action="/pesquisa" method="GET">
+                <input type="search" class="form-control pesquisa" name="termo" placeholder="Pesquisar ⌕">
+                </form>
+            </div>
+
+
+            <!-- Link para a página "Quem Somos" -->
+            <div class="navbar-col quem-somos">
+                <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
+            </div>
+
+            <div class="navbar-col">
+                <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+            </div>
+
+            <!-- Link para a página de login -->
+            <div class="navbar-col login">
+
+                {% if session['loggedin'] == True %}
+                <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+                {% elif session['loggedin'] == False %}
+                <a href="{{ url_for('login' ) }}">Login</a>
+                {% else %}
+                <a href="{{ url_for('login' ) }}">Login</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="grid-pesqisa">
+                {% for item in pesquisa %}
+                <div class="card-pesquisa-item">
+
+                    <!-- Imagem do hotel -->
+                    <img class="img-card-pesquisa" src="{{ url_for('static', filename=item.img_home) }}"
+                        alt="Imagem do hotel">
+
+                    <!-- Nome do hotel -->
+                    <h2 class="nome-card-pesquisa">{{ item.nome }}</h2>
+
+                    <!-- Localização do hotel -->
+                    <p class="local-card-pesquisa"><strong>Localização:</strong> {{ item.localizacao }}</p>
+
+                    <!-- Botão para visualizar mais detalhes do hotel -->
+                    <a class="a-card-pesquisa" href="{{ url_for('hotelPagina', id=item.id ) }}">
+                        <button class="btn-card-home" type="button">Conferir!</button>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

@@ -24,11 +24,13 @@
               <img class="img-logo-nav" src="{{ url_for('static', filename='imagens/logo/logo.png' ) }}" alt="Logo">
             </a>
           </div> 
-  
-          <!-- Campo de pesquisa na navbar -->
-          <div class="navbar-col pesquisa">
-            <input type="text" class="form-control pesquisa" placeholder="Pesquisar ⌕">
-          </div>
+          
+      <!-- Campo de pesquisa na navbar -->
+      <div class="navbar-col pesquisa">
+        <form action="/pesquisa" method="GET">
+          <input type="search" class="form-control pesquisa" name="termo" placeholder="Pesquisar ⌕">
+        </form>
+      </div>
   
           <!-- Link para a página "Quem Somos" -->
           <div class="navbar-col quem-somos">
