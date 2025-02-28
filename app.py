@@ -71,15 +71,34 @@ def login():
 
     return render_template('login.html', msg=msg)
 
+'''Rota de pesquisa'''
+@app.route('/pesquisa', methods=['GET'])
+def pesquisa():
+    
+    termo = request.args.get('termo').lower()
+    
+    if termo == 'residencia' or termo == 'residência' or termo == 'residências':
+        query = 'SELECT id, nome, localizacao, preco_diaria, residencia_img_home AS img_home FROM residencia'
+    if termo == 'hotel' or termo == 'hoteis' or termo == 'hotéis':
+        query = 'SELECT id, nome, localizacao, preco_diaria, hotel_img_home AS img_home FROM hoteis'
+   
+    cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+    cursor.execute(query)
+    pesquisa = cursor.fetchall()
+    print(pesquisa)
+    cursor.close()
+
+    return render_template('pagePesquisa.html', pesquisa=pesquisa )
+
 '''Page usuario'''
 @app.route('/usuario/<int:id>', methods=['GET'])
 def usuario(id):
 
     if request.method == 'GET':
-            cursor = MYSQL_CONNECTION.cursor(dictionary=True)
-            cursor.execute(f'SELECT * FROM users WHERE id = {id}')
-            usuario = cursor.fetchone()
-            cursor.close()
+        cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+        cursor.execute(f'SELECT * FROM users WHERE id = {id}')
+        usuario = cursor.fetchone()
+        cursor.close()
 
     return render_template('pageUsuario.html', usuario=usuario)
 
@@ -246,10 +265,6 @@ def hotelPagina(id):
         return f"falise to acess tables in MYSQL: {error}"
     
     return render_template('paginaHotel.html', hotelCarac=hotelCarac)
-'''
-Rota de carrinho
-Valdemiro
-'''
 
 '''
 Rota de administrador
