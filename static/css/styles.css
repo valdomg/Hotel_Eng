@@ -165,7 +165,14 @@ footer {}
     
 }
 
-
+.resultados{
+    display: flex;
+    justify-self: center;
+    margin: 20px;
+    color: rgb(177, 194, 158);
+    font-weight: bolder;
+    font-size: 30px;
+}
 
 
 .card-grid .card:first-child .img-card-home {

@@ -62,23 +62,28 @@
     </header>
 
     <main>
+
+        <h1 class="resultados">Resultados para {{termo}}</h1>
+        
         <section>
-            <div class="grid-pesqisa">
+            <div class="card-grid">
                 {% for item in pesquisa %}
-                <div class="card-pesquisa-item">
+                <div class="card">
 
                     <!-- Imagem do hotel -->
-                    <img class="img-card-pesquisa" src="{{ url_for('static', filename=item.img_home) }}"
+                    <img class="img-card-home" src="{{ url_for('static', filename=item.img_home) }}"
                         alt="Imagem do hotel">
 
                     <!-- Nome do hotel -->
-                    <h2 class="nome-card-pesquisa">{{ item.nome }}</h2>
+                    <h2 class="nome-card-home">{{ item.nome }}</h2>
 
                     <!-- Localização do hotel -->
-                    <p class="local-card-pesquisa"><strong>Localização:</strong> {{ item.localizacao }}</p>
+                    <p class="local-card-home"><strong>Localização:</strong> {{ item.localizacao }}</p>
+
+                    <h3 class="preco-home">R$ {{item.preco_diaria}} /dia</h3>
 
                     <!-- Botão para visualizar mais detalhes do hotel -->
-                    <a class="a-card-pesquisa" href="{{ url_for('hotelPagina', id=item.id ) }}">
+                    <a class="a-card-home" href="{{ url_for('hotelPagina', id=item.id ) }}">
                         <button class="btn-card-home" type="button">Conferir!</button>
                     </a>
                 </div>
