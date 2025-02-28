@@ -64,6 +64,28 @@
     <section>
       <div class="formulario">
 
+<<<<<<< HEAD
+            <form action="/login" method="POST">
+                <div class="item-form form-nome"></div>
+                    <h2>Login</h2>
+                <div class="item-form form-group-email">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                </div>
+            
+                <div class="item-form form-group-senha">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+                </div>
+                
+                <div class="item-form form-group-btn">
+                    <button type="submit" class="btn-login">Entrar</button>
+                </div>
+               
+                <a href="{{ url_for('cadastro') }}">Não tem Cadastro? Crie um conta clicando aqui</a>
+                <a href="{{ url_for('redefinir_senha' ) }}">Esqueceu a senha? Clique aqui</a>
+            </form>
+=======
         <form action="/login" method="POST">
           <div class="item-form form-nome"></div>
           <h2>Login</h2>
@@ -71,6 +93,7 @@
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
           </div>
+>>>>>>> 8029b44a66fadb6612e4a2e763cf1dfc6289681d
 
           <div class="item-form form-group-senha">
             <label for="senha">Senha:</label>

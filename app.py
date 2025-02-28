@@ -222,6 +222,36 @@ def logout():
 Rota de cadastro
 Paulo Braga
 '''
+@app.route("/cadastro", methods=["GET", "POST"])
+def cadastro():
+    if request.method == "GET":
+        return render_template("cadastroUsuario.html")
+
+    elif request.method == "POST":
+        nome = request.form['nome']
+        email = request.form['email']
+        senha = request.form['senha']
+
+        cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+
+        # Verifica se o e-mail já está cadastrado
+        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+        usuario_existente = cursor.fetchone()
+
+        if usuario_existente:
+            cursor.close()
+            return "Erro: Este e-mail já está cadastrado!"
+
+        # Inserindo novo usuário
+        query = "INSERT INTO users (nome, email, senha) VALUES (%s, %s, %s)"
+        cursor.execute(query, (nome, email, senha))
+
+        MYSQL_CONNECTION.commit()
+        cursor.close()
+
+        return redirect(url_for('login'))
+
+
 
 '''
 Rota de recuperação de senha
