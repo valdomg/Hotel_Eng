@@ -78,13 +78,6 @@ python app.py
 ```
 Acesse o sistema em `http://127.0.0.1:5000/`.
 
-## **Funcionalidades**
-- Cadastro e login de usuários - a fazer
-- Listagem de hotéis -  feito
-- Gerenciamento de clientes - a fazer
-- Sistema de reservas - a fazer
-- Check-in e check-out - a fazer
-
 # Documentação da API Flask
 
 ## Visão Geral
