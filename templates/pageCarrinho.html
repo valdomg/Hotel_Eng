@@ -29,9 +29,11 @@
 
       <!-- Campo de pesquisa na navbar -->
       <div class="navbar-col pesquisa">
-        <input type="text" class="form-control pesquisa" placeholder="Pesquisar ⌕">
+        <form action="/pesquisa" method="GET">
+          <input type="search" class="form-control pesquisa" name="termo" placeholder="Pesquisar ⌕">
+        </form>
       </div>
-
+      
       <!-- Link para a página "Quem Somos" -->
       <div class="navbar-col quem-somos">
         <a href="{{ url_for('quemSomos' ) }}"> Quem Somos </a>
@@ -76,13 +78,11 @@
         <div class="card-carrinho">
           <img src="{{ url_for('static', filename=hotel.img_home ) }}" alt="Imagem do Hotel">
           <div class="info">
-            <h3>{{ hotel.nome }}</h3>
+            <h3>{{ hotel.hospedagem_nome }}</h3>
             <p>{{ hotel.localizacao }}</p>
             <h4 class="preco-total-valor">R$ {{ hotel.preco_diaria }}</h4>
-            <h4 class="preco-total-valor">Total: R$ 0,00</h4>
-            <p class="quantidade">Quantidade: {{ hotel.quantidade }}</p>
-
-
+              <h5 class="descricao-carrinho">{{hotel.descricao}}</h5>
+            
             <button type="button" class="remover" onclick="removerItem({{hotel.carrinho_id}})">
               Remover
             </button>

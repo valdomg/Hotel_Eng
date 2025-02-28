@@ -71,15 +71,34 @@ def login():
 
     return render_template('login.html', msg=msg)
 
+'''Rota de pesquisa'''
+@app.route('/pesquisa', methods=['GET'])
+def pesquisa():
+    
+    termo = request.args.get('termo').lower()
+    
+    if termo == 'residencia' or termo == 'residência' or termo == 'residências':
+        query = 'SELECT id, nome, localizacao, preco_diaria, residencia_img_home AS img_home FROM residencia'
+    if termo == 'hotel' or termo == 'hoteis' or termo == 'hotéis':
+        query = 'SELECT id, nome, localizacao, preco_diaria, hotel_img_home AS img_home FROM hoteis'
+   
+    cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+    cursor.execute(query)
+    pesquisa = cursor.fetchall()
+    print(pesquisa)
+    cursor.close()
+
+    return render_template('pagePesquisa.html', pesquisa=pesquisa )
+
 '''Page usuario'''
 @app.route('/usuario/<int:id>', methods=['GET'])
 def usuario(id):
 
     if request.method == 'GET':
-            cursor = MYSQL_CONNECTION.cursor(dictionary=True)
-            cursor.execute(f'SELECT * FROM users WHERE id = {id}')
-            usuario = cursor.fetchone()
-            cursor.close()
+        cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+        cursor.execute(f'SELECT * FROM users WHERE id = {id}')
+        usuario = cursor.fetchone()
+        cursor.close()
 
     return render_template('pageUsuario.html', usuario=usuario)
 
@@ -158,7 +177,7 @@ def carrinho():
        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
        h.nome AS hospedagem_nome, h.localizacao, h.preco_diaria, 
        h.hotel_img_home AS img_home, h.hotel_img_quarto AS img_quarto, 
-       h.hotel_img_area_lazer AS img_area_lazer, h.categoria, 'hotel' AS tipo
+       h.hotel_img_area_lazer AS img_area_lazer, h.categoria, h.descricao , 'hotel' AS tipo
         FROM carrinho c
         JOIN hoteis h ON c.hospedagem_id = h.id
 
@@ -167,7 +186,7 @@ def carrinho():
         SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
             r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
             r.residencia_img_home AS img_home, r.residencia_img_quarto AS img_quarto, 
-            r.residencia_img_area_lazer AS img_area_lazer, r.categoria, 'residencia' AS tipo
+            r.residencia_img_area_lazer AS img_area_lazer, r.categoria, r.descricao,'residencia' AS tipo
         FROM carrinho c
         JOIN residencia r ON c.hospedagem_id = r.id
 
@@ -276,10 +295,6 @@ def hotelPagina(id):
         return f"falise to acess tables in MYSQL: {error}"
     
     return render_template('paginaHotel.html', hotelCarac=hotelCarac)
-'''
-Rota de carrinho
-Valdemiro
-'''
 
 '''
 Rota de administrador

@@ -33,7 +33,9 @@
 
       <!-- Campo de pesquisa na navbar -->
       <div class="navbar-col pesquisa">
-        <input type="email" class="form-control pesquisa" placeholder="Pesquisar ⌕">
+        <form action="/pesquisa" method="GET">
+          <input type="search" class="form-control pesquisa" name="termo" placeholder="Pesquisar ⌕">
+        </form>
       </div>
 
       <!-- Link para a página "Quem Somos" -->

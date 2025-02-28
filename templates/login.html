@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    
-    <!-- Importação do Bootstrap para estilização -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Importação da fonte Open Sans do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
 
-    <!-- Importação do arquivo de estilos CSS personalizado -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <!-- Importação do Bootstrap para estilização -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Importação da fonte Open Sans do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+
+  <!-- Importação do arquivo de estilos CSS personalizado -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
 
   <!-- NAVBAR (Barra de Navegação) -->
@@ -24,11 +26,13 @@
         <a href="{{ url_for('home' ) }}">
           <img class="img-logo-nav" src="{{ url_for('static', filename='imagens/logo/logo.png' ) }}" alt="Logo">
         </a>
-      </div> 
+      </div>
 
       <!-- Campo de pesquisa na navbar -->
       <div class="navbar-col pesquisa">
-        <input type="email" class="form-control pesquisa" placeholder="Pesquisar ⌕">
+        <form action="/pesquisa" method="GET">
+          <input type="search" class="form-control pesquisa" name="termo" placeholder="Pesquisar ⌕">
+        </form>
       </div>
 
       <!-- Link para a página "Quem Somos" -->
@@ -44,13 +48,13 @@
       <div class="navbar-col login">
 
         {% if session['loggedin'] == True %}
-          <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
+        <a href="{{ url_for('usuario', id=session['id']) }}"> Olá, {{session['username']}}</a>
         {% elif session['loggedin'] == False %}
-          <a href="{{ url_for('login' ) }}">Login</a>
+        <a href="{{ url_for('login' ) }}">Login</a>
         {% else %}
-          <a href="{{ url_for('login' ) }}">Login</a>
+        <a href="{{ url_for('login' ) }}">Login</a>
         {% endif %}
-        
+
       </div>
     </div>
   </header>
@@ -58,8 +62,9 @@
   <main>
 
     <section>
-        <div class="formulario">
+      <div class="formulario">
 
+<<<<<<< HEAD
             <form action="/login" method="POST">
                 <div class="item-form form-nome"></div>
                     <h2>Login</h2>
@@ -80,12 +85,35 @@
                 <a href="{{ url_for('cadastro') }}">Não tem Cadastro? Crie um conta clicando aqui</a>
                 <a href="{{ url_for('redefinir_senha' ) }}">Esqueceu a senha? Clique aqui</a>
             </form>
+=======
+        <form action="/login" method="POST">
+          <div class="item-form form-nome"></div>
+          <h2>Login</h2>
+          <div class="item-form form-group-email">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+          </div>
+>>>>>>> 8029b44a66fadb6612e4a2e763cf1dfc6289681d
 
-        </div>
+          <div class="item-form form-group-senha">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+          </div>
+
+          <div class="item-form form-group-btn">
+            <button type="submit" class="btn-login">Entrar</button>
+          </div>
+
+          <a href="">Não tem Cadastro? Crie um conta clicando aqui</a>
+          <a href="{{ url_for('redefinir_senha' ) }}">Esqueceu a senha? Clique aqui</a>
+        </form>
+
+      </div>
     </section>
 
   </main>
 
 
 </body>
+
 </html>
