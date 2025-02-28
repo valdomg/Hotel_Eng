@@ -74,6 +74,10 @@ footer {}
     box-shadow: 1px 1px 5px rgba(32, 61, 41, 0.1)
 }
 
+.login{
+    line-height: 20px;
+}
+
 /* Para garantir que o placeholder tenha cor diferente */
 .pesquisa input::placeholder {
     color: rgb(177, 194, 158);
@@ -158,6 +162,7 @@ footer {}
 
 .card-grid .card:first-child .img-card-home {
     height: 200px;
+
 }
 
 /*QUando eu quiser colocar metade do botão conferir no card principal = 50%*/
@@ -181,7 +186,7 @@ footer {}
     font-weight: bolder;
     color: white;
     border-style: hidden;
-    border-radius: 20px;
+    border-radius: 8px;
 }
 
 .a-card-home {}
@@ -210,7 +215,43 @@ footer {}
     width: inherit;
     height: inherit;
     object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    animation: slide 12s infinite;
+    position: absolute;
+
 }
+
+.img-home-slide-end{
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    animation: slide 12s infinite;
+    position: absolute;
+
+}
+
+/*animações*/
+.img-home-slide:nth-child(1) { animation-delay: 0s; }
+.img-home-slide:nth-child(2) { animation-delay: 3s; }
+.img-home-slide:nth-child(3) { animation-delay: 6s; }
+.img-home-slide:nth-child(4) { animation-delay: 9s; }
+
+.img-home-slide-end:nth-child(1) { animation-delay: 0s; }
+.img-home-slide-end:nth-child(2) { animation-delay: 3s; }
+.img-home-slide-end:nth-child(3) { animation-delay: 6s; }
+.img-home-slide-end:nth-child(4) { animation-delay: 9s; }
+
+@keyframes slide {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
 
 /*Estilização da página de Hotel/Residência 
 
@@ -220,6 +261,20 @@ footer {}
     margin-top: 20px; /* Reduza para aproximar
 
 */
+
+.page-hotel-slide{
+    height: 400px;
+    width: 100%;
+    
+}
+
+.img-page-hotel{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
 
 .grid-page-hotel {
     display: grid;
@@ -280,8 +335,9 @@ footer {}
     height: 200px;
 
     .preco-preco {
-        font-size: 80px;
+        margin-top: 20px; 
         grid-column: 1/4;
+        font-size: clamp(30px, 5vw, 50px);
 
     }
 
@@ -299,7 +355,7 @@ footer {}
         font-weight: bolder;
         color: white;
         border-style: hidden;
-        border-radius: 30px;
+        border-radius: 10px;
     }
 
 
@@ -504,6 +560,10 @@ footer {}
         font-size: 18px;
     }
 
+    .login{
+        line-height: 17px;
+    }
+
 
     /*configs home init*/
     .home-init {}
@@ -551,7 +611,6 @@ footer {}
 
     .card {
         padding: 12px;
-        height: 400px;
         text-align: left;
         border-style: hidden;
         border-radius: 25px;
@@ -589,10 +648,13 @@ footer {}
 
 
     /*Estilização mobile para page de hotel*/
+    .page-hotel-slide{
+        height: 200px;
+    }
 
     .grid-page-hotel {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         /* Apenas 1 coluna */
         grid-template-rows: auto;
         width: 90vw;
@@ -606,25 +668,27 @@ footer {}
 
     .grid-item {
         grid-column: 1/2;
-        text-align: center;
+        
     }
 
     .page-hotel-nome {
-        font-size: 20px;
+        font-size: 40px;
         /* Reduzido para melhor encaixe */
-        line-height: 20px;
+        line-height: 40px;
     }
 
     .page-hotel-localizacao {
         text-align: left;
+        
         font-size: 20px;
         /* Reduzindo tamanho */
         margin-bottom: 10px;
     }
 
     .page-hotel-descricao {
+        grid-column: 1/2;
         text-align: left;
-        font-size: 16px;
+        font-size: 15px;
         height: auto;
         margin-bottom: 15px;
     }
@@ -632,31 +696,29 @@ footer {}
     .grid-item.preco {
         grid-column: 2/2;
         /* Preço abaixo das características */
-
         
     }
 
     .grid-item.preco.preco-grid {
-        /*
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: auto;
-        padding: 20px;
-        border-radius: 30px;
-        border-style: solid;
-        */
+        height: 150px;
+        border-radius: 10px;
+        
     }
 
-    .preco-preco {
+    .preco-preco{
         /* Diminuindo tamanho do preço */
+        
+    }
+
+    .preco-btn{
+        
     }
 
     .btn-reserve {
         width: 100%;
         height: 50px;
-        font-size: 10px;
+        font-size: 15px;
+        background-color: red;
     }
 
 }
