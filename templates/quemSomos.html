@@ -57,7 +57,50 @@
     </div>
   </header>
   <main>
-    <img class="goku-careca" src="{{ url_for('static' , filename='imagens/teste/goku-careca.png' ) }}" alt="">
+
+        
+    <div class="container">
+
+      
+      <!-- Conteúdo aqui -->
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Perfil</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Matrícula</th>
+              <th scope="col">Informações gerais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/valdemiro.jpg' ) }}"></th>
+              <td>Valdemiro Gabriel</td>
+              <td>2023123TADS0003</td>
+              <td>Aluno</td>
+            </tr>
+            <tr>
+              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/yara.jpg' ) }}"></th>
+              <td>Yara Beatriz Ferreira Gomes</td>
+              <td>2023123TADS0037</td>
+              <td>Aluno</td>
+            </tr>
+            <tr>
+              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/paulo.png' ) }}"></th>
+              <td>Paulo Braga Uchôa Filho</td>
+              <td>2023123TADS0016</td>
+              <td>Cadete</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        
+      </div>
+    </div>
+
+    
   </main>
   <footer>
     aaaaaaaaaaa
