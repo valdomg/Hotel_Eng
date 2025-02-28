@@ -169,7 +169,14 @@ def remover_carrinho(item_id):
     return redirect(url_for('carrinho'))
 
 
+'''        UNION
 
+        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
+            r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
+            r.residencia_img_home AS img_home, r.categoria, r.descricao,'residencia' AS tipo
+        FROM carrinho c
+        JOIN residencia r ON c.hospedagem_id = r.id
+'''
 @app.route('/ver_carrinho', methods=['GET', 'POST'])
 def carrinho():
     if 'id' not in session:
@@ -180,19 +187,9 @@ def carrinho():
     query = """
        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
        h.nome AS hospedagem_nome, h.localizacao, h.preco_diaria, 
-       h.hotel_img_home AS img_home, h.hotel_img_quarto AS img_quarto, 
-       h.hotel_img_area_lazer AS img_area_lazer, h.categoria, h.descricao , 'hotel' AS tipo
+       h.hotel_img_home AS img_home, h.categoria, h.descricao , 'hotel' AS tipo
         FROM carrinho c
         JOIN hoteis h ON c.hospedagem_id = h.id
-
-        UNION
-
-        SELECT c.id AS carrinho_id, c.usuario_id, c.quantidade, c.preco_total, 
-            r.nome AS hospedagem_nome, r.localizacao, r.preco_diaria, 
-            r.residencia_img_home AS img_home, r.residencia_img_quarto AS img_quarto, 
-            r.residencia_img_area_lazer AS img_area_lazer, r.categoria, r.descricao,'residencia' AS tipo
-        FROM carrinho c
-        JOIN residencia r ON c.hospedagem_id = r.id
 
         WHERE c.usuario_id = %s;
 
@@ -299,6 +296,20 @@ def hotelPagina(id):
         return f"falise to acess tables in MYSQL: {error}"
     
     return render_template('paginaHotel.html', hotelCarac=hotelCarac)
+
+@app.route('/residencia/<int:id>', methods = ['GET'])
+def residenciaPagina(id):
+    try:
+        if request.method == 'GET':
+            cursor = MYSQL_CONNECTION.cursor(dictionary=True)
+            cursor.execute(f'SELECT * FROM residencia WHERE id = {id}')
+            residenciaCarac = cursor.fetchone()
+            cursor.close()
+            
+    except mysql as error:
+        return f"falise to acess tables in MYSQL: {error}"
+    
+    return render_template('paginaResidencia.html', residenciaCarac=residenciaCarac)
 
 '''
 Rota de administrador

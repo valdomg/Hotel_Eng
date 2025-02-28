@@ -58,54 +58,61 @@
       </div>
     </div>
   </header>
+
   <main>
 
-        
-    <div class="container">
+      
+      <div class="page-hotel-slide">
+        <img class="img-page-hotel" src="{{ url_for('static', filename=residenciaCarac.hotel_img_home ) }}" alt="Imagens de Hotéis">
+      </div>
+
+
+      <div class="grid-page-hotel">
+        <div class="grid-item">
+          <div class="page-hotel-nome">
+            {{residenciaCarac.nome}}
+          </div>
+
+          <div class="page-hotel-localizacao">
+            {{residenciaCarac.localizacao}}
+          </div>
+
+          <div class="page-hotel-descricao">
+            {{residenciaCarac.descricao}}
+            
+          </div>
+        </div>
+        <div class="grid-item preco preco-grid">
+          <div class="preco-preco">
+            R${{residenciaCarac.preco_diaria}}
+          </div>
+
+          <div class="preco-btn">
+
+            {% if session['loggedin'] == True %}
+              <button class="btn-reserve" type="button" onclick="adicionarAoCarrinho({{residenciaCarac.id}} ,  'residencia')">RESERVE AGORA!</button>
+            {% else %}
+              <a href="#"><button class="btn-reserve" type="button">RESERVE AGORA!</button></a>
+            {% endif %}
+            
+          </div>
+          
+          
+        </div>
+    
+      </div>
 
       
-      <!-- Conteúdo aqui -->
-      <div class="shadow-lg p-3 mb-5 bg-white rounded">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Perfil</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Matrícula</th>
-              <th scope="col">Informações gerais</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/valdemiro.jpg' ) }}"></th>
-              <td>Valdemiro Gabriel</td>
-              <td>2023123TADS0003</td>
-              <td>Aluno</td>
-            </tr>
-            <tr>
-              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/yara.jpg' ) }}"></th>
-              <td>Yara Beatriz Ferreira Gomes</td>
-              <td>2023123TADS0037</td>
-              <td>Aluno</td>
-            </tr>
-            <tr>
-              <th scope="row"><img src="{{ url_for('static', filename='imagens_uso_geral/paulo.png' ) }}"></th>
-              <td>Paulo Braga Uchôa Filho</td>
-              <td>2023123TADS0016</td>
-              <td>Cadete</td>
-            </tr>
-          </tbody>
-        </table>
-
-
-        
-      </div>
-    </div>
-
-    
+      
   </main>
+
   <footer>
-    aaaaaaaaaaa
+    
   </footer>
 </body>
+
+
+<script src="{{ url_for('static', filename="/js/adicionarAoCarrinho.js" ) }}"></script>
+
+
 </html>

@@ -38,7 +38,9 @@
         </div>
 
         <div class="navbar-col">
-          <a href="{{ url_for('carrinho' ) }}">Carrinho</a>
+          <a href="{{ url_for('carrinho' ) }}">
+            <img src="{{ url_for('static', filename='imagens_uso_geral/bag.png' ) }}" alt="" srcset="">
+          </a>
         </div>
 
         <!-- Link para a página de login -->
@@ -120,19 +122,19 @@
         <section>
           <div class="card-grid">
             
-            {% for residencia in residencia %}
+            {% for residencias in residencias %}
             <div class="card">
               <!-- Imagem do hotel -->
-              <img class="img-card-home" src="{{ url_for('static', filename=residencia.hotel_img_home) }}" alt="Imagem do hotel">
+              <img class="img-card-home" src="{{ url_for('static', filename=residencias.residencia_img_home) }}" alt="Imagem do hotel">
               
               <!-- Nome do hotel -->
-              <h2 class="nome-card-home">{{ hotel.nome }}</h2>
+              <h2 class="nome-card-home">{{ residencias.nome }}</h2>
               
               <!-- Localização do hotel -->
-              <p class="local-card-home"><strong>Localização:</strong> {{ residencia.localizacao }}</p>
+              <p class="local-card-home"><strong>Localização:</strong> {{ residencias.localizacao }}</p>
               
               <!-- Botão para visualizar mais detalhes do hotel -->
-              <a class="a-card-home" href="{{ url_for('hotelPagina', id=residencia.id ) }}">
+              <a class="a-card-home" href="{{ url_for('residenciaPagina', id=residencias.id ) }}">
                 <button class="btn-card-home" type="button">Conferir!</button>
               </a> 
             </div>
